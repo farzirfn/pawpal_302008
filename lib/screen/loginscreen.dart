@@ -47,6 +47,9 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: Text('Login Page', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // <-- Change back arrow color here
+        ),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -162,7 +165,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(height: 5),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pop(context);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

@@ -37,6 +37,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         title: Text('Register Page', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white, // <-- Change back arrow color here
+        ),
       ),
       body: Center(
         child: SingleChildScrollView(
