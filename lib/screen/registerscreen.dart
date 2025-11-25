@@ -176,6 +176,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
       return;
     }
+    if (phone.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Phone number is required')));
+      return;
+    }
+
+    if (!RegExp(r'^01[0-9]{8,9}$').hasMatch(phone)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Enter a valid Malaysian phone number')),
+      );
+      return;
+    }
     if (password != confirmPassword) {
       SnackBar snackBar = const SnackBar(
         content: Text('Passwords do not match'),
