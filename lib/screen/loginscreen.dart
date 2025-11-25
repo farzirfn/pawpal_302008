@@ -47,9 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         title: Text('Login Page', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
-        iconTheme: IconThemeData(
-          color: Colors.white, // <-- Change back arrow color here
-        ),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -238,9 +235,7 @@ class _LoginScreenState extends State<LoginScreen> {
             var resarray = jsonDecode(jsonResponse);
             log(jsonResponse);
             if (resarray['status'] == 'success') {
-              //print(resarray['data'][0]);
               user = User.fromJson(resarray['data'][0]);
-
               if (!mounted) return;
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(

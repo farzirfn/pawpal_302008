@@ -37,9 +37,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       appBar: AppBar(
         title: Text('Register Page', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.black,
-        iconTheme: IconThemeData(
-          color: Colors.white, // <-- Change back arrow color here
-        ),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -200,7 +198,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              registerUser(email, password, name, phone);
+              regUser(email, password, name, phone);
             },
             child: Text('Register'),
           ),
@@ -214,12 +212,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void registerUser(
-    String email,
-    String password,
-    String name,
-    String phone,
-  ) async {
+  void regUser(String email, String password, String name, String phone) async {
     setState(() {
       isLoading = true;
     });
