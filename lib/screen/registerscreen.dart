@@ -33,9 +33,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
       width = width;
     }
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
-        title: Text('Register Page', style: TextStyle(color: Colors.white)),
+        title: Text(
+          'Register Page',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.black,
         iconTheme: IconThemeData(color: Colors.white),
       ),
