@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2025 at 07:12 PM
+-- Generation Time: Dec 06, 2025 at 12:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `pawpal_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_pets`
+--
+
+CREATE TABLE `tbl_pets` (
+  `pet_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `pet_name` varchar(100) NOT NULL,
+  `pet_type` varchar(50) NOT NULL,
+  `category` varchar(50) NOT NULL,
+  `description` text NOT NULL,
+  `images_path` text NOT NULL,
+  `lat` varchar(50) NOT NULL,
+  `lng` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -41,31 +60,40 @@ CREATE TABLE `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`user_id`, `name`, `email`, `password`, `phone`, `reg_date`) VALUES
-(1, 'a', 'a@gmail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '1', '2025-11-25 21:28:42'),
-(2, 'farzirfn', 'farzirfn@gmail.com', '011c945f30ce2cbafc452f39840f025693339c42', '0111097040', '2025-11-25 21:46:23'),
-(3, 'fariz', 'farzirfn1@gmail.com', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2', '123456', '2025-11-25 21:56:52'),
-(4, 'Faiz', 'faiz@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '1234', '2025-11-25 22:03:07'),
-(5, 'fariz', 'farzirfn2@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '0111089070', '2025-11-26 01:22:18');
+(1, 'fariz irfan', 'farzirfn@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '01110979040', '2025-12-05 05:42:30');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `tbl_pets`
+--
+ALTER TABLE `tbl_pets`
+  ADD UNIQUE KEY `pet_id` (`pet_id`);
+
+--
 -- Indexes for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `tbl_pets`
+--
+ALTER TABLE `tbl_pets`
+  MODIFY `pet_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
