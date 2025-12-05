@@ -5,6 +5,7 @@ include 'dbconnect.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
+    //join query to fetch pet and user details
     $query = "
         SELECT 
             p.pet_id,

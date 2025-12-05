@@ -286,6 +286,16 @@ class _SubmitPetScreenState extends State<SubmitPetScreen> {
   }
 
   void pickimagedialog() {
+    if (images.length >= 3) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("You can only upload up to 3 images"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     showDialog(
       context: context,
       builder: (context) {
@@ -358,23 +368,43 @@ class _SubmitPetScreenState extends State<SubmitPetScreen> {
 
   // Open camera to take a picture
   Future<void> openCamera() async {
+    if (images.length >= 3) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Maximum 3 images allowed"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.camera);
 
     if (pickedFile != null) {
       images.add(File(pickedFile.path));
-      cropImage(images.length - 1); // crop the last added image
+      cropImage(images.length - 1);
     }
   }
 
   // Open gallery to select a picture
   Future<void> openGallery() async {
+    if (images.length >= 3) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Maximum 3 images allowed"),
+          backgroundColor: Colors.red,
+        ),
+      );
+      return;
+    }
+
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       images.add(File(pickedFile.path));
-      cropImage(images.length - 1); // crop the last added image
+      cropImage(images.length - 1);
     }
   }
 

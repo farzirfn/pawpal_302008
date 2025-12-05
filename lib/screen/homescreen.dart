@@ -9,7 +9,7 @@ import 'package:pawpal/screen/loginscreen.dart';
 import 'package:pawpal/screen/submitpetscreen.dart';
 
 class HomeScreen extends StatefulWidget {
-  final User user;
+  final User? user;
   const HomeScreen({super.key, required this.user});
 
   @override
@@ -123,6 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           0.22, // balanced aspect ratio
                                       color: Colors.grey[200],
                                       child: Image.network(
+                                        // path to retrieve image from server
                                         '${MyConfig.baseUrl}/pawpal/${petList[index].imagesPath[0]}',
                                         fit: BoxFit.cover,
                                         errorBuilder:
@@ -246,7 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           // Action for the button
-          if (widget.user.userId == '0') {
+          if (widget.user?.userId == '0') {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text("Please login first/or register first"),
@@ -269,7 +270,6 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         child: Icon(Icons.add),
       ),
-      //drawer: MyDrawer(user: widget.user),
     );
   }
 
@@ -318,6 +318,7 @@ class _HomeScreenState extends State<HomeScreen> {
     http
         .get(
           Uri.parse(
+            //api path to get pets
             '${MyConfig.baseUrl}/pawpal/API/get_my_pets.php?search=$searchQuery',
           ),
         )

@@ -22,19 +22,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     autologin();
-    Future.delayed(Duration(seconds: 3), () {
-      if (!mounted) return;
-      User user = User(
-        userId: '0',
-        email: 'guest@email.com',
-        password: 'guest',
-        userRegdate: '0000-00-00',
-      );
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => HomeScreen(user: user)),
-      );
-    });
   }
 
   void autologin() {
@@ -51,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
             .then((response) {
               if (response.statusCode == 200) {
                 var jsonResponse = response.body;
-                // print(jsonResponse);
+                print(jsonResponse);
                 var resarray = jsonDecode(jsonResponse);
                 if (resarray['status'] == 'success') {
                   //print(resarray['data'][0]);
